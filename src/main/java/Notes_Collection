@@ -1,0 +1,319 @@
+Collection is an extended interface of Iterable interface.
+List is another interface which extends Collection. The implementing class of List interface are
+1. ArrayList
+2. Linked List
+3. Vector.
+Iterator method is present in the iterable interface and all the implementing classes have it in them.
+But #map does not follow this hierarchy. They are not implementing iterable.
+
+boolean add(): will take some object that we give and add it to the list. it also tells us whether the add operation was
+successful or not.
+
+boolean addAll(): it is used to join 2 collections.
+for ex: if we have 2 lists list1 and list1, and add list2 to list1 then use
+list1.addAll(list2);
+
+clear(): is used to remove all elements in the collection.
+
+boolean contains(Object o): this is used to check whether this collection contains Object o or not.
+
+boolean containsAll(collection<?> c):this is used to check whether this collection contains the specified objects or not.
+
+boolean equal(Object o): coming from the object class.
+
+int hashcode(): coming from the object class.
+
+boolean isEmpty(): checks whether the collection is empty or not.
+
+boolean remove(object o): remove the object from the collection
+
+boolean removeAll(): remove all the specified objects.
+
+boolean retainAll(Collection<> c): it retains the collection mentioned.
+
+int size(): to get the size of the collection.
+
+Object[] toArray():
+
+**difference between collection and list?
+In a collection, there is no order to be followed.But a list has to follow an order. List is the ordered collection of objects.
+
+**difference between list and set?
+List can have duplication, but set cannot have duplication. Also, set is not required to follow an order. Which means,
+Set is an unordered collection without allowing duplicates.
+if we have a use case to insert a data in the middle, don't go with a List. If we need to add a data in the middle,
+a space is made at the end and all the members after the middle location are shifted one by one. then the data is inserted
+into the middle location. Adding and deleting from the last location is easy. But, if we need to perform them from the middle,
+then it is difficult. Internally, it creates a new array list and performs the add operation.
+
+
+**In Array, we have to mention the size while declaring. But in ArrayList, it is dynamic and it is not needed to tell
+the size of the Array. But, we initially provide an initial capacity. But, if the limit exceeds that initial capacity,
+then the arraylist regrows. Every time it regrows, it tries to create a new data structure and copies everything into it.
+By default, it gives an array list with 10 only. if we know 400 students are there, we need to keep it 450.
+Otherwise, there will be dynamic growth for many times. (10 to (10*1.5)=15, then 15 to 1.5*15 and so on). If we
+already know there are 400 lists, then we can create an array list of 400 objects.
+
+Default capacity of Array list =10. once it reaches maximum, the new capacity =(current capacity *3/2)+1.
+
+**when to go for array list
+1. when you want to store data in order
+2. when you do not have update, insertion, deletion operations in the middle.
+3. when we have duplicate values
+4. if we want to add, in order and retrieve in order use list.
+
+**Collections is a utility class which has utility methods to operate on the collection.
+
+Collections.sort(List); the list that we will be passing should be of some type such as String, Integer, etc.
+They have the comparable method already implemented on them. But for the custom type, the class has to provide the
+implementation for the Comparable interface(compare to method.
+
+list.indexof("Shintu")// is actually searching for the object "Shintu". Searching is a very bad choice in ArrayList.
+if you know the index number, ArrayList is good. Big O notation is important in Java.
+if the element is at the last, then time complexity will be On.
+instead of index, we go for hash method. The hash will guide us where the object is currently sitting.
+
+
+
+**<angular brackets>: is called generics. we use this for type safety. only that type of objects can be passed to the list.
+the list that can store any type of data is of no use. The list is useful if it has similar type of data. **
+
+the most popular used collection implementations are list, set and map parts.
+
+Iterator has two methods
+1. hasNext(): this checks if there is a next element and returns boolean if there is next element. Also,
+it passes the remote control to the next element.
+2. next(): It gives the value of the next element.
+
+**Linked List
+1. can have duplicate elements like array list.
+2. maintains insertion order. (in #set or #map, we won't get data in the order in which we inserted)
+3. **it is non-synchronized. So, any number of threads can enter at the same time in an Array list/linked list object.**
+**Vector is a synchronized class. it is thread safe. So, only 1 thread can enter the vector object at a time.
+There is a keyword "synchronized" that is used for the methods of the vector class.
+for ex: public synchronized boolean add(E e){
+
+} the add method in the vector class is shown above and it has the keyword synchronized. **
+if we dont want to get our data polluted, go for thread safe (vector) classes.
+if we are not bothered about our data getting polluted, go for non-thread safe classes.
+
+4. Linked list has better performance compared to Vector. For vector classes, performance will be less. Because, threads will
+have to wait. but it ensures data consistency(no data manipulation).
+
+5. Array list is a bad choice if we to manipulate data on the basis of data stored in it. But it is a good choice if we
+know the index of the elements. For searching, never use array list.
+Linked list is a good choice if the insertion, deletion is in the middle. Manipulation is fast in linked list, because
+there is no shifting occurring. Because in array list, the array provides continuous memory allocation to store data.
+Linked list doesn't have continuous memory allocation. The blocks in linked list are placed at random memory locations.
+A whole memory block is called a node. The next node is not continuous. Each node consists of two parts. One part(data) stores the
+data and the other part(next) stores the address of the next node in the memory. So, the next part knows where the next
+node will be stored in the memory. Since each node are linked to each other, it's called linked list. By just changing the
+link, we can manipulate data. This is why manipulation is faster in linked list. If we are frequently manipulating the middle
+of list, then we go for a linked list.
+There are simple linked list and doubly linked list. In simple linked list, each node is linked to the next node only.
+So, it has only one way connection.
+But in a doubly linked list, each node is linked to the next node and the previous node. So, it has two way connection.
+**The Linked list class uses the  doubly linked list data structure to store the elements.
+** we use Linked list when our frequent operation is manipulation as it prevents shifting.
+***But, we will not use a linked list when our frequent operation is searching.***
+
+The add method is not recommended to use with the array list. but we can use it with linked list.
+Additionally, addFirst and addLast methods are available for Linked list class compared to Array List class. Because
+adding at first location is faster for linked list. For adding at the last location, we can use either array list or linked list.
+if we need to retrieve based on the index, go with the array list as its easy to add the memory location in arrays as they are
+continuous.
+ Linked list is not faster to jump to any index number. But, getting the first and last are possible easily. But, the
+ middle members are not economical.
+ For searching, we use hash based collections.
+ In linked list, if we do not specify at which location an object should be added, it will be added at the last location.
+
+ linked list specific methods:
+ offer(E e): adds the specified element at the last location
+ offerFirst(): adds at the first
+ offerLast(): adds at the last
+ peek(): retrieves the first element
+ peekFirst(): retrieves the first element
+ peekLast(): retrieves the last element
+ poll(): retrieves and removes the first element
+ pollFirst():
+ pollLast():
+ pop(): pops an element
+ push(): pushes an element
+
+ ** Thumb rule: always use the methods from the List interface for Linked list, and Array list.
+ **99% of the time, Array list is used.
+ ** we can insert a null value to an array list and linked list. and duplicate them.
+
+
+ VECTOR:
+ it is similar to array list. It uses dynamic array to store data elements. **But, all the Vector methods are Synchronized.**
+ So, it's performance is low compared to array list. But data consistency will be more. Data structure is similar to array list.
+ 10 blocks will be provided initially.
+When thread 1 enters an object method, all the methods are synchronized. The thread 1 will put a lock on the object. If
+another thread2 is trying to enter a different synchronized method, it won't be able to do that. This is the problem with
+synchronization of methods. So, the next thread has to wait(to get the lock) until thread 1 has completed using the method
+it entered into.
+
+
+Stack:it is a sub-class of Vector. It implements last in first out(LIFO) data structure.
+
+Queue: FIFO(first in first out). we insert at the back and take out from the front.
+element() & peek() methods in Queue retrieves the value that is present in the front.
+poll() and remove() methods in Queue deletes the value that is present in the front.
+
+
+                Set Interface
+1. It is unordered(insertion order will be lost) collection of elements
+2. Doesn't allow duplication of elements(it contains only unique elements).
+for ex: in our application we can classify the errors in a set. Because, there is no point in obtaining multiple errors
+of the same type. So, we can classify the errors obtained as put them as a set. So, we can collect the errors and
+add them to a set. So, we will get only different type of errors.
+
+**We can use set to collect the errors that occurred in our app during one request handling.Here, order of the error is
+not important. Only the category is important.
+3. we can add null value in a set, but only once.
+4. It has not added any method of its own. It carries the same methods that it got from Collection interface.
+5. It has 3 implementing classes
+Hash Set : the most popular one(90% of the time)
+Tree Set: contains all features added by hash set + sorting feature.
+used when we want our elements to be sorted on natural order.
+Linked Hash Set: contains all features added by hash set + provides the insertion order. Every element knows where the next
+element is placed in the set.
+
+Hash set: uses the hash mechanism.
+**Important:
+In hash set, the insertion order will not be maintained(it will be lost). Also, the elements will not come sorted.
+In a hash set data structure, each array index will point to a linked list with many nodes.
+while we store a data, the hash code for the data will be calculated(either string or integer). it will do a modulus
+operation on this hash code. By default, the number of array blocks that is available is 16. So, modulus of 16 will be
+done on the hash code we got(%16) to get the bucket number.  Then this hash code will get mapped to the bucket(index) number.
+There are chances that two different objects can have same hash code.(refer to ppt)
+So, there are chances that two different objects can have the same hash code Each of these objects will be put in
+two different nodes .
+When two objects having same hash code is mapped to the same bucket, it is called hash code collision.
+hash based collections solved the problem of storing only 1 object in the array list. They provided the reference of
+ a linked list instead of storing one object's reference. The first element that arrives will be stored as the first node.
+ The next element is stored in the next node and so on. The address of the first element is stored in the bucket. It will
+ create a new node only if the hash code collision happens. The vertical portion in the ppt represents an array list.
+  The implementation of hash set is an array of linked list or called as hash table.
+   So, hash set uses hashing and does not allow duplication
+  of data. If you try to add a same element again, it first calculates the hashcode. Then it will go to each node and
+  put a .equals with that node, if they are equal, then it wont allow to enter the data. if .equals is false, then it allows
+  to enter the data.
+  if 75%(load factor) of the buckets are filled with at least one of the node, the size of the bucket will grow(dynamically).
+    if we are sure that 100 elements will be coming in, then we have to initialize the array size to at least 50.
+    Because resizing the array is costly. Also, we don't want to grow our hash table horizontally as it inhibits our
+    purpose of searching. searching is the main purpose of Hash based collections. Hashing makes the searching faster.
+    The data that is entered should be able to tell which bucket this word is mapped to. That problem was solved by hashing
+    technique. This is why hashing techniques are faster while searching. We can directly reach to the index number without
+    asking the index number.
+    after fetching the bucket number, we have to travel horizontally. If there are not enough bucket numbers vertically ,
+     then lots of collisions will happen. Then after collision, nodes will be created in the same horizontal level. Shorter
+      the linked list, faster will be the searching process.
+      Two important methods being called for the hash based collections are hashCode() and equals().
+      for the wrapper classes, the hash code() and equals()  are already overridden in their blueprint.
+      So, if we are entering a custom data type, we have to override these methods inside the custom class blueprint.
+      these two methods are already present in the object class(god class).
+      the equals () in object class checks the address of two objects to see if they are equals. (== checks the address
+      of two variables). These two methods are very important in hashset and hashmap. So, while overriding,
+      we are telling that do not consider the superficial features, consider the inner features.
+      If we do not override hashcode and equals in the object's class, hash set will allow addition of
+      duplicates. Because it will treat the objects as different. **
+
+
+
+** but if we use the Linked hash set, we will get the elements in the same order we inserted.**
+
+** in a tree set, the first element got entered is stored in the root. The following elements are compared with the
+root element and placed to the right or left according to the natural sorting unless we specify the sorting it needs.
+Because they already have implemented the comparable interface. But, if we need to compare two custom objects,
+we have to provide the compare to method inside the class's blueprint. **
+
+**Point to remember: Linked hash set will give us the insertion order. Tree set will give us the sorting order. **
+
+HashMap:
+When we are searching a key against value, we go for a hash map. Such as when we want the information of an
+employee object against employee ID, we use a hashmap. When we want to dump whole objects without allowing duplication
+and you just want to print it out, we go for a hash set. Internally, hash set is also implementing a hash map without
+data(value).
+
+Linked Hash Set: in this, the bucket will be a linked list and not an array. It will keep track which element got inserted
+first and which got inserted second. In a hash set, we cannot ensure that the elements will get printed in the order
+they were inserted. But, in a linked list, the elements will get printed in the same order they were inserted. When we
+insert the first element, it will be mapped as a starting point. In hash set, it will not keep track of the first
+array index that is mapped to. we cannot track which element was mapped first in the hash set. This can be solved using a
+linked hash set. In hash set, we are getting random bucket numbers.
+In a linked hash set, there each node will be having data and 3 pointers.So, each node will know which element got inserted
+after me, before me, and the insertion order.
+
+Sorted Set: is an interface extending the Set interface. It is a sorted set. Tree Set is an implementing class of Sorted
+Set. It uses everything that hash set is using + sorting feature. It does not preserve the insertion order.
+**We cannot insert null value(null) into the tree set**
+In tree set, it calls compare to method to compare the objects that are coming.
+
+**Comparable interface has compareTo() method inside. It has only one object. uses this keyword to mention the current
+object. **
+While adding a second object to a tree set, it will compare the 2nd object with the first object. If if 2nd object is
+smaller, then it will be arranged in the first place.
+
+**We can create a custom comparator by implementing the Comparator interface. The abstract method compare() is present
+in the comparator interface.It has two objects and has no this pointer to point to the current object. If we are not
+ satisfied by the compare to method developed in the String class or any other class, we can create custom compare method
+ using the Comparator Interface. Here, we are not creating the compare method inside the blueprint of the custom class,
+ but we are defining the compare() in another class. So, we can create multiple compare methods according to our need
+ by creating different classes and implement the Comparator interface.
+ For example, if we want to compare the objects of a class by the object's name property, we can create a compare method on that
+  basis. or if we want to compare by age property, we can create another compare method in another class. **
+
+  It is not obliged to use the compare to method which comes from Comparable interface to compare the objects of a class.
+  In the blueprint, we can only implement compare to method once. But, we can create N number of custom comparators.
+  If there are use cases when we need to compare on the basis of salary, age, etc etc, then we cannot be only satisfied with the
+  compare to method. So, we have to go with custom comparators.
+  We can pass the instance of our custom comparator to the argument list in the remote control statement.
+  Always the custom comparator will override the blueprint's implementation.
+
+  We can sort by calling the Collections.sort() also. It uses the blueprint's comparable implementation to sort the elements
+  unless we are providing the custom comparator.
+
+  Tree set can only store homogenous types of data. But array list, linked list can store heterogeneous types of data.
+
+Hash Map: In addition to key, there are values also. In hash set, key is used to calculate the hashcode. In hash map also,
+the key is used to find the hash code. Key is used to store the data. Key should not collide. The bucket size is 16 and load
+factor is 0.75. In each node, there will be key and it's associated value. Same value can be stored in different keys.
+
+**Collections framework works only with wrappers and objects.**
+While sending the data also, we send objects and not primitives. In Rest API, we send the object. The whole (key,value) pair
+is called an entry. Map is an interface and Entry is another interface inside the Map interface. Map is not a part of the
+Collection hierarchy in Java. It means, Hash map doesn't come under the Iterable interface in the hierarchy. So, we cannot
+iterate by calling the iterator method().
+We can store null also in the Hash map. Also, it will be stored always in bucket 0. Because we cannot find the hash code
+of the null value. So, 0th index is reserved for null. So, we can store Null keys in Map.
+The methods are different in Maps. The methods under the collections hierarchy are not present here.
+Here, get() and put() methods are used to retrieve and store data.
+** The main difference in Maps is if we put(1,richa) and in the next line if we put(1,pooja), it will not return true or
+false. Instead, it will go and update richa by pooja.
+In set, if we are trying to add a duplicate data, it will return false. But in hash map, it will go and update that value.
+
+Iterating through the hash map: Each (key,value) pair is called an Entry in the map. To access the Entry interface,
+we should call the Map interface. That is Map.Entry(refer to the picture). The type of (key,value) pair is Entry.
+Each entry is composed of some data types.  Here, Set is of type Map.Entry and each Entry is of some data types.
+For eg: Set<Map.Entry<Integer, String>> entries = map.entrySet();
+**This is an example of generics inside generics. **
+
+**Hash Map is widely used for searching.This searching is faster. **
+get or default method(): it is used when we are not able to find a specified key, return some default value.
+This is used to avoid the probability of throwing null pointer exception.
+
+Set<Map.Entry<Integer, String>> entries = map.entrySet();
+Now we have a set of all the entries in our hand.
+
+We can print the keys and values separately using the KeySet and Values methods. But, if we need to preserve the connection
+between keys and values, we should go with EntrySet() method.
+
+
+compute method in map. Will do some computation on the values based on the key.
+For example, for a key 2, we want to do some computation on it's value and store it in the value.
+inside compute method, there is a bi function lambda. it will take two inputs and return a bi function.
+
+
+

@@ -1,0 +1,21 @@
+Enum:
+It is a special type of blueprint where the number of objects are specified at the time of creation of blueprint itself.
+Enum is a group of constants. It is used to limit the choice of data user can input.
+When we know the values are restricted, we can go for an enum.
+
+//Size.SMALL is the enum. And, internally it has some string values corresponding to it.
+
+The enum value of "SMALL" can be found with the valueOf().
+Similarly, the String value(version) of an enum can be found with Size.SMALL.name().
+
+** We cannot create the objects of Enum. Because the constructors are private to the enum itself.
+
+We can bind enum objects with properties. While creating enum, it is important to bind the properties with the constructors
+to the objects.
+
+We are not making calls to the Enum constructor from the psvm. Some body will be making the call to the constructor.
+We just made the order that SMALL is the object name. Someone will be creating the call to the constructor. The parameter
+passed while calling the constructor will be stored in the property sizeNumber. This property is used for inter-conversions.
+That is 1 to small and small to 1.
+
+We can use an Enum to create the list of country codes of all countries that takes fixed values only.

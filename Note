@@ -1,0 +1,18 @@
+<dependency>
+        <groupId>mysql</groupId>// name of the company
+        <artifactId>mysql-connector-java</artifactId>//name of the jar
+        <version>8.0.28</version>
+    </dependency>
+
+    maven fetches this jar from the internet and stores it in our system.
+    mvn clean install : this command will clean the version of the jar present and install the new jar.
+    clean and install  we usually do when we want to fetch from remote(internet).
+
+    **use the load changes maven icon on the right top corner of pom file if there is any error in the dependency code we downloaded.
+
+Maven is a project management tool. it can run the unit test. It can manage the project life cycle.
+
+the snapshot number means that one is under development. if it is ready for release, it will be named as version number.
+
+after we type the mvn clean install command, it will compile the codes and place it in a target folder. the target folder will
+only be enabled if we type the mvn clean install command. It will create a jar file inside the target folder.
